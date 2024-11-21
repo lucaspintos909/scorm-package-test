@@ -180,9 +180,10 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("assets/interface.html").then((response) => response.text()),
     fetch("assets/nav.html").then((response) => response.text()),
     fetch("assets/activity.js").then((response) => response.text()),
+    fetch("pipwerks-scorm-api-wrapper.js").then((response) => response.text()),
     fetch("assets/config.html").then((response) => response.text()),
   ])
-    .then(async ([interfaceHTML, navHTML, activityJS, configHTML]) => {
+    .then(async ([interfaceHTML, navHTML, activityJS, scormAPI, configHTML]) => {
       // If we have cached elements, use them instead of fetching
       if (cachedInterface && cachedNavigation) {
         restoreInterfaceElements();
@@ -223,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Inject the JavaScript code from activity.js dynamically into the document
       const script = document.createElement("script");
       script.type = "text/javascript";
-      script.text = activityJS;
+      script.text = activityJS + scormAPI;
       document.body.appendChild(script);
 
       await fetchTranslations();

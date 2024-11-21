@@ -739,6 +739,21 @@ function checkTableInputs() {
   );
 }
 
+function markActivityAsCompleted() {
+  let scorm = pipwerks.SCORM;
+  scorm.version = "1.2";
+
+  const activityId = location.pathname.substring(location.pathname.lastIndexOf("/") + 1).split(".")[0];
+  localStorage.setItem(`${activityId}_success`, "true")
+
+  if (scorm.init()) {
+    scorm.set("cmi.core.lesson_status", "completed");
+    scorm.set("cmi.core.score.raw", "100");
+    scorm.save();
+    scorm.quit();
+  }
+}
+
 function updateSubmitButtonAndToast(
   isCorrect,
   buttonText = translateText("next-activity"),
@@ -774,8 +789,7 @@ function updateSubmitButtonAndToast(
       submitButton.addEventListener("click", nextPage); // Add the new click handler
       submitButton.setAttribute("aria-label", translateText("next-activity"));
 
-      const activityId = location.pathname.substring(location.pathname.lastIndexOf("/") + 1).split(".")[0];
-      localStorage.setItem(`${activityId}_success`, "true")
+      markActivityAsCompleted()
     }
 
     // Hide the Toast after 3 seconds
