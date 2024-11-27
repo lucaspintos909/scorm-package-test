@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="scorm.test.package" version="1.2"
+          xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
+          xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3">
+    <metadata>
+        <schema>ADL SCORM</schema>
+        <schemaversion>1.2</schemaversion>
+    </metadata>
+    <organizations default="org_1">
+        <organization identifier="org_1" isvisible="false">
+            <title>Cuaderno para leer y escribir en quinto</title>
+            <!-- Cada actividad como un SCO independiente -->
+            <item identifier="activity_10_0" identifierref="resource_10_0" isvisible="false">
+                <title>Activity 10.0</title>
+            </item>
+            <item identifier="activity_10_1" identifierref="resource_10_1" isvisible="false">
+                <title>Activity 10.1</title>
+            </item>
+            <item identifier="activity_12_1" identifierref="resource_12_1" isvisible="false">
+                <title>Activity 12.1</title>
+            </item>
+        </organization>
+    </organizations>
+    <resources>
+        <!-- Declarar cada actividad como un recurso independiente -->
+        <resource identifier="resource_10_0" type="webcontent" adlcp:scormtype="sco" href="10_0_adt.html">
+            <file href="10_0_adt.html"/>
+            <file href="script.js"/>
+            <file href="styles.css"/>
+        </resource>
+        <resource identifier="resource_10_1" type="webcontent" adlcp:scormtype="sco" href="10_1_adt.html">
+            <file href="10_1_adt.html"/>
+            <file href="script.js"/>
+            <file href="styles.css"/>
+        </resource>
+        <resource identifier="resource_12_1" type="webcontent" adlcp:scormtype="sco" href="12_1_adt.html">
+            <file href="12_1_adt.html"/>
+            <file href="script.js"/>
+            <file href="styles.css"/>
+        </resource>
+    </resources>
+</manifest>
