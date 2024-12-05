@@ -293,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
             scorm.set(`cmi.interactions.${index}.type`, "fill-in");
             scorm.set(`cmi.interactions.${index}.student_response`, value);
             scorm.set(`cmi.interactions.${index}.result`, "neutral");
-            scorm.set(`cmi.interactions.${index}.description`, activityId);
+            //scorm.set(`cmi.interactions.${index}.description`, activityId);
             
             contador += 1;
             localStorage.setItem("contador", contador.toString());
