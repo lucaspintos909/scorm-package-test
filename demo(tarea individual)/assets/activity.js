@@ -745,16 +745,11 @@ function markActivityAsCompleted() {
   const activityId = location.pathname.substring(location.pathname.lastIndexOf("/") + 1).split(".")[0];
   localStorage.setItem(`${activityId}_success`, "true")
 
-  if (!scorm.isAvailable()) {
-    scorm.init()
-  }
+  scorm.init()
 
   scorm.set("cmi.core.lesson_status", "completed");
   scorm.set("cmi.core.score.raw", "100");
-
-  // Marcar actividad como completada
-  scorm.set("cmi.core.lesson_status", "completed");
-
+  
   scorm.save();
   scorm.quit();
 }

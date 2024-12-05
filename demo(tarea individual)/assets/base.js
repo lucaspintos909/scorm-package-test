@@ -275,13 +275,15 @@ document.addEventListener("DOMContentLoaded", function () {
           nodo.value = localStorage.getItem(localStorageNodeId)
 
           nodo.addEventListener("input", (event) => {
+            let scorm = pipwerks.SCORM;
+            scorm.version = "1.2";
             const value = event.target.value
             localStorage.setItem(localStorageNodeId, value)
             // Guardar interacción en SCORM
-            if (!scorm.isAvailable()) {
-
-            }
-            scorm.set(`cmi.interactions.${index}.id`, "student_response");
+            
+            scorm.init()
+            
+            scorm.set(`cmi.interactions.${index}.id`, `student_response_${localStorageNodeId}`);
             scorm.set(`cmi.interactions.${index}.type`, "fill-in");
             scorm.set(`cmi.interactions.${index}.student_response`, value);
             scorm.set(`cmi.interactions.${index}.result`, "neutral");
