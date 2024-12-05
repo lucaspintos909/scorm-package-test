@@ -268,7 +268,6 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         });
 
-        saveActivities()
         // Add event listeners to other activities
         activities.forEach((nodo, index) => {
           const id = nodo.getAttribute("data-aria-id")
@@ -293,7 +292,8 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.setItem(`${activityId}_success`, "true")
         }) */
       }
-
+      
+      saveActivities()
       // Initialize left nav bar state from cookie
       const navState = getCookie("navState") || "closed";
       const navPopup = document.getElementById("navPopup");
