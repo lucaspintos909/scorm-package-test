@@ -751,7 +751,6 @@ function markActivityAsCompleted() {
   scorm.set("cmi.core.score.raw", "100");
   
   scorm.save();
-  scorm.quit();
 }
 
 function updateSubmitButtonAndToast(

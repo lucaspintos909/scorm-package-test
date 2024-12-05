@@ -267,7 +267,11 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem(activityId, JSON.stringify(dataActivity));
           });
         });
-
+        // Inicializa el contador si no existe
+        if (!localStorage.getItem("contador")) {
+          localStorage.setItem("contador", "0");
+        }
+        
         // Add event listeners to other activities
         activities.forEach((nodo, index) => {
           const id = nodo.getAttribute("data-aria-id")
@@ -279,7 +283,9 @@ document.addEventListener("DOMContentLoaded", function () {
             scorm.version = "1.2";
             const value = event.target.value
             localStorage.setItem(localStorageNodeId, value)
+
             // Guardar interacción en SCORM
+            let contador = parseInt(localStorage.getItem("contador"), 10);
             
             scorm.init()
             
@@ -287,6 +293,10 @@ document.addEventListener("DOMContentLoaded", function () {
             scorm.set(`cmi.interactions.${index}.type`, "fill-in");
             scorm.set(`cmi.interactions.${index}.student_response`, value);
             scorm.set(`cmi.interactions.${index}.result`, "neutral");
+            scorm.set(`cmi.interactions.${index}.description`, activityId);
+            
+            contador += 1;
+            localStorage.setItem("contador", contador.toString());
           })
         })
 
