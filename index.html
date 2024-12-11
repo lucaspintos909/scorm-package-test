@@ -1,19 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCORM Test Activity</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Cuaderno para leer y escribir en quinto</title>
+    <!-- DO NOT EDIT OR REMOVE the <script> tags -->
+    <link href="assets/tailwind_output.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+    <!-- Mathjax script to use for rendering math. -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta content="0_0" name="page-section-id" />
 </head>
-<body>
-    <h1>SCORM Test Activity</h1>
-    <p>Click the button below to save your progress.</p>
-    <button id="saveProgress">Save Progress</button>
-    <p id="status"></p>
+
+<body class="bg-green-300 font-sans">
+    <!-- The main interface components -->
+    <!-- DO NOT EDIT Contains the bottom bar, next back buttons, submit button, right sidebar, ai language, eli5 and tts toggles -->
+    <div id="interface-container" class="relative z-50"></div>
+    <!-- DO NOT EDIT Contains the left nav bar, html page list -->
+    <div id="nav-container" class="relative z-50"></div>
+    <main>
+        <!-- THERE MUST ALWAYS BE A SECTION TAG -->
+        <section
+            class="max-w-4xl mx-auto bg-green-300 gap-10 p-6 sm:p-12 flex flex-col sm:flex-row items-center justify-between"
+            data-id="sectioneli5-0-0" data-section-type="front_cover" role="article">
+            <!-- Title Section -->
+            <div class="w-full sm:w-3/5">
+                <div class="text-center bg-green-600 rounded-full p-10">
+                    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4" data-id="text-0-0">Cuaderno para leer y
+                        escribir en quinto</h1>
+                    <p class="text-lg text-white mt-2" data-id="text-0-1">EDUCACIÓN INICIAL Y PRIMARIA</p>
+                </div>
+                <div class="bg-white/90 shadow-lg border-2 border-green-700 rounded-md p-5 mt-9 mb-5">
+                    <div class="flex flex-col space-y-3">
+                        <div class="lg:flex justify-between space-y-3 lg:space-y-0">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Este cuaderno pertenece a:</label>
+                                <input aria-label="Nombre del titular del cuaderno"
+                                    class="border border-gray-300 p-2 rounded-md w-full" data-aria-id="aria-0-0-0"
+                                    data-placeholder-id="placeholder-0-0-0" placeholder=".........................."
+                                    tabindex="0" type="text" />
+                            </div>
+
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Escuela n.º:</label>
+                                <input aria-label="Número de la escuela " class="border border-gray-300 p-2 rounded-md w-full"
+                                    data-aria-id="aria-0-0-1" data-placeholder-id="placeholder-0-0-1"
+                                    placeholder=".........................." tabindex="0" type="text" />
+                            </div>
+                        </div>
+                        <div class="lg:flex justify-between space-y-3 lg:space-y-0">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Clase:</label>
+                                <input aria-label="Clase o grado" class="border border-gray-300 p-2 rounded-md w-full"
+                                    data-aria-id="aria-0-0-2" data-placeholder-id="placeholder-0-0-2"
+                                    placeholder=".........................." tabindex="0" type="text" />
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Año:</label>
+                                <input aria-label="Año escolar" class="border border-gray-300 p-2 rounded-md w-full"
+                                    data-aria-id="aria-0-0-3" data-placeholder-id="placeholder-0-0-3"
+                                    placeholder=".........................." tabindex="0" type="text" />
+                            </div>
+                        </div>
+                        <!-- <label for="language" class="block text-gray-700 font-medium mb-2">Selecciona un
+                            lenguaje:</label>
+                        <select id="language"
+                            class="block w-full p-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-5">
+                            <option value="es_uy">Español-Uruguay</option>
+                            <option value="en">Inglés</option>
+                            <option value="es">Español</option>
+                            <option value="es_azure">Español-Azure</option>
+                        </select> -->
+                        <!-- <div class="md:flex justify-between">
+                            <label for="toggleEasy" class="flex items-center cursor-pointer mb-4 md:mb-0">
+                                Toggle
+                                <div class="relative">
+                                    
+                                    <input type="checkbox" id="toggleEasy" class="sr-only peer">
+                               
+                                    <div class="block bg-gray-400 w-12 h-7 rounded-full transition peer-checked:bg-indigo-600"></div>
+                                    <div
+                                        class="dot absolute left-1 top-1 bg-white w-5 h-5 rounded-full transition transform peer-checked:translate-x-5">
+                                    </div>
+                                </div>
+                                <div class="ml-3 text-gray-700 font-medium">
+                                    Activar EasyRead
+                                </div>
+                            </label>
+                            <label for="toggleExplain" class="flex items-center cursor-pointer">
+                                <div class="relative">
+                                    <input type="checkbox" id="toggleExplain" class="sr-only peer">
+                                    <div class="block bg-gray-400 w-12 h-7 rounded-full transition peer-checked:bg-indigo-600"></div>
+                                    <div
+                                        class="dot absolute left-1 top-1 bg-white w-5 h-5 rounded-full transition transform peer-checked:translate-x-5">
+                                    </div>
+                                </div>
+                                <div class="ml-3 text-gray-700 font-medium">
+                                    Activar ExplainMe
+                                </div>
+                            </label>
+                        </div> -->
+                        <div class="mt-4 pt-4 flex justify-center border-t-2">
+                            <button
+                                class="text-xl shadow-md rounded-full bg-green-600 hover:bg-green-800 transition text-white font-medium mx-auto px-4 py-2" onclick="window.location.href='2_0_adt.html'">Ingresar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="w-full sm:w-2/5">
+                <img alt="Un personaje de cocodrilo animado vistiendo ropa moderna, con una chaqueta roja, una camiseta blanca y un sombrero rojo, con una expresión amigable."
+                    aria-label="Un personaje de cocodrilo animado vistiendo ropa moderna, con una chaqueta roja, una camiseta blanca y un sombrero rojo, con una expresión amigable."
+                    class="mx-auto" data-id="img-0-1" src="images/0_img-0-1.png" />
+            </div>
+        </section>
+    </main>
+    <!-- Footer Logos -->
+    <!-- <div class="fixed bottom-0 left-0 w-full mt-8 flex flex-col sm:flex-row justify-center text-center items-center p-5 gap-6 sm:px-12 bg-white border-t-4 border-green-600">
+<img alt="Logotipo de la Administración Nacional de Educación Pública." aria-label="Logotipo de la Administración Nacional de Educación Pública." class="h-8" data-id="img-0-2" src="images/0_img-0-2.png"/>
+<img alt="Logotipo del Consejo de Educación Inicial y Primaria (CEIP)." aria-label="Logotipo del Consejo de Educación Inicial y Primaria (CEIP)." class="h-8" data-id="img-0-3" src="images/0_img-0-3.png"/>
+</div> -->
+
     <!-- Incluye primero la biblioteca de SCORM -->
     <script src="pipwerks-scorm-api-wrapper.js"></script>
     <!-- Luego tu script -->
-    <script src="script.js"></script>
+    <script src="assets/base.js"></script>
 </body>
+
 </html>
