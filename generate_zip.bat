@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 :: Variables
 set "SRC_DIR=.\src"
 set "OUTPUT_DIR=.\output"
-set "BASE_NAME=tarea_individual"
+set "BASE_NAME=multitarea"
 set "DEFAULT_VERSION=1"
 
 :: Crear la carpeta de salida si no existe

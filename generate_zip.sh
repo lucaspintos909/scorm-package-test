@@ -3,7 +3,7 @@
 # Variables
 SRC_DIR="./src"
 OUTPUT_DIR="./output"
-BASE_NAME="tarea_individual"
+BASE_NAME="multitarea"
 DEFAULT_VERSION="v1"
 
 # Crear la carpeta de salida si no existe
