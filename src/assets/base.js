@@ -157,9 +157,12 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem(activityId, JSON.stringify(dataActivity));
       });
     });
-
+    
     // Add event listeners to other activities
-    activities.forEach((nodo) => {
+    activities.forEach((nodo, index) => {
+      let scorm = pipwerks.SCORM;
+      scorm.version = "1.2";
+      
       const id = nodo.getAttribute("data-aria-id")
       const localStorageNodeId = `${activityId}_${id}`
       nodo.value = localStorage.getItem(localStorageNodeId)
@@ -167,6 +170,26 @@ document.addEventListener("DOMContentLoaded", function () {
       nodo.addEventListener("input", (event) => {
         const value = event.target.value
         localStorage.setItem(localStorageNodeId, value)
+
+        // Guardar interacción en SCORM
+        console.info("scorm init");
+        
+        scorm.init()
+
+        console.info("scorm inicializado");
+
+        console.info("save interactions");
+        
+        scorm.set(`cmi.interactions.${index}.id`, `student_response_${localStorageNodeId}`);
+        scorm.set(`cmi.interactions.${index}.type`, "fill-in");
+        scorm.set(`cmi.interactions.${index}.student_response`, value);
+        scorm.set(`cmi.interactions.${index}.result`, "neutral");
+
+        console.info("fin interactions");
+        console.info("scorm save");
+        scorm.save()
+        console.info("fin scorm save");
+
       })
     })
 
