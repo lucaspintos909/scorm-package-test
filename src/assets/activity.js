@@ -740,8 +740,9 @@ function checkTableInputs() {
 
 function markActivityAsCompleted() {
   let scorm = pipwerks.SCORM;
-  scorm.version = "1.2";
-
+  //scorm.version = "1.2";
+  scorm.reset="2004";
+  
   const activityId = location.pathname.substring(location.pathname.lastIndexOf("/") + 1).split(".")[0];
   localStorage.setItem(`${activityId}_success`, "true")
 

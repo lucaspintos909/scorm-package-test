@@ -223,7 +223,8 @@ document.addEventListener("DOMContentLoaded", function () {
       //save function 
       function saveActivities() {
         let scorm = pipwerks.SCORM;
-        scorm.version = "1.2";
+        //scorm.version = "1.2";
+        scorm.version = "2004";
 
         const activities = document.querySelectorAll(
           "input[type='text'], textarea, .word-card"
@@ -269,7 +270,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         
         // Add event listeners to other activities
-        activities.forEach((nodo, index) => {
+        activities.forEach((nodo, initialIndex) => {
+          let interactionIndex = initialIndex;
           const id = nodo.getAttribute("data-aria-id")
           const localStorageNodeId = `${activityId}_${id}`
           nodo.value = localStorage.getItem(localStorageNodeId)
@@ -284,11 +286,14 @@ document.addEventListener("DOMContentLoaded", function () {
             
             scorm.init()
             
-            scorm.set(`cmi.interactions.${index}.id`, `student_response_${localStorageNodeId}`);
-            scorm.set(`cmi.interactions.${index}.type`, "fill-in");
-            scorm.set(`cmi.interactions.${index}.student_response`, value);
-            scorm.set(`cmi.interactions.${index}.result`, "neutral");
-            scorm.set(`cmi.interactions.${index}.description`, activityId);
+            scorm.set(`cmi.interactions.${interactionIndex}.id`, `student_response_${localStorageNodeId}`);
+            scorm.set(`cmi.interactions.${interactionIndex}.type`, "fill-in");
+            scorm.set(`cmi.interactions.${interactionIndex}.student_response`, value);
+            scorm.set(`cmi.interactions.${interactionIndex}.result`, "neutral");
+            //scorm.set(`cmi.interactions.${interactionIndex}.description`, activityId);
+            scorm.data.set(`cmi.interactions.${interactionIndex}.description`, "valor harcodeado");
+
+            interactionIndex++;
           })
         })
 
